@@ -1,9 +1,18 @@
-.logo{
+.logo {
     padding: 15px;
-    margin:0;
-}
+    margin: 0;
+  }
+  
 
-.navbar-nav{
-    padding-right: 20px;
-    gap: 15 px;
-}
+  .nav-link {
+    color: white ; 
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  
+    &:hover,
+    &.active-link {  
+      color: #d0ff00 ;
+    
+    }
+  }
+  
+ 
