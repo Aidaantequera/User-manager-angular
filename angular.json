@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/boostrap/dist/css/boostrap.min.css"
+              "node_modules/boostrap/dist/css/boostrap.min.scss"
             ],
             "scripts": [
               "node_modules/boostrap/dist/js/boostrap.bundle.min.js"
