@@ -1,1 +1,9 @@
-<p>home works!</p>
+<ul>
+    @for (user of arrUsersPromises; track user._id) {
+      <li>
+        {{ user.first_name }} {{ user.last_name }} - {{ user.email }}
+      </li>
+    } @empty {
+      <li>No hay usuarios disponibles.</li>
+    }
+  </ul>
