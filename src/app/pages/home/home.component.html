@@ -1,1 +1,9 @@
-<p>home works!</p>
+<ul>
+    @for (user of arrUsers; track user._id) {
+      <li>
+        {{ user.image }}{{ user.first_name }} {{ user.last_name }} 
+      </li>
+    } @empty {
+      <li>No hay usuarios disponibles.</li>
+    }
+  </ul>
