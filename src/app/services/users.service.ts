@@ -1,31 +1,25 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable,inject, } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
 import { IUsers } from '../interfaces/iusers';
+import { lastValueFrom } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IResponse } from '../interfaces/iresponse'; // Importa IResponse
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  
   private endPoint: string = "https://peticiones.online/api/users";
-  private httpClient= inject(HttpClient)
+  private httpClient = inject(HttpClient);
 
-  getAll(): Promise<IUsers[]> {
-    return lastValueFrom(this.httpClient.get<IUsers[]>(this.endPoint, this.getAuthorization()));
+  getAll(): Promise<IResponse> { // Cambia el tipo de retorno a Promise<IResponse>
+    return lastValueFrom(this.httpClient.get<IResponse>(this.endPoint));
   }
 
   getById(id: string): Promise<IUsers> {
-    return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`, this.getAuthorization()));
+    return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`));
   }
 
-  private getAuthorization() {
-    return {
-      headers: new HttpHeaders({
-        'Content-type': 'application/json',
-        'Authorization': localStorage.getItem('token') || ""
-      })
+  
     };
-  }
-}
+  
 

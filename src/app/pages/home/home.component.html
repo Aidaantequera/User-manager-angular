@@ -1,7 +1,7 @@
 <ul>
-    @for (user of arrUsersPromises; track user._id) {
+    @for (user of arrUsers; track user._id) {
       <li>
-        {{ user.first_name }} {{ user.last_name }} - {{ user.email }}
+        {{ user.image }}{{ user.first_name }} {{ user.last_name }} 
       </li>
     } @empty {
       <li>No hay usuarios disponibles.</li>

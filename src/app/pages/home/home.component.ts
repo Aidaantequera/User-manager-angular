@@ -1,27 +1,29 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IUsers } from '../../interfaces/iusers';
 import { UsersService } from '../../services/users.service';
+import { IResponse } from '../../interfaces/iresponse';
+
 
 @Component({
   selector: 'app-home',
-  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
-  arrUsersPromises: IUsers[] = [];
-  UsersService = Inject(UsersService);
+export class HomeComponent {
+  arrUsers: IUsers[] = [];
+  usersService = inject(UsersService);
 
-  async ngOnInit() {
-    
+  constructor() {
+    this.loadUsers();
+  }
+
+  async loadUsers() {
     try {
-      this.arrUsersPromises = await this.UsersService.getAll();
-      console.log('promesa', this.arrUsersPromises);
+      const response: IResponse = await this.usersService.getAll(); // Usa la interfaz IResponse
+      this.arrUsers = response.results;
+      console.log('promesa', response);
     } catch (error) {
       console.error('Error al obtener usuarios:', error);
     }
   }
 }
-  
-
-
