@@ -1,9 +1,27 @@
-<ul>
-    @for (user of arrUsers; track user._id) {
-      <li>
-        {{ user.image }}{{ user.first_name }} {{ user.last_name }} 
-      </li>
-    } @empty {
-      <li>No hay usuarios disponibles.</li>
-    }
-  </ul>
+<div>
+    <h1 class="mx-auto p-2 m-4"  style="width: 200px;">Usuarios</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+      @for (user of arrUsers; track user._id) {
+        <div class="col-md-4 mb-4">
+          <div class="card border border-dark border-4 rounded-5" >
+            <img [src]="user.image" class="card-img-top rounded-circle border border-dark border-4" 
+                 alt="Imagen de {{ user.first_name }} {{ user.last_name }}" 
+                 style="width: 100px; height: 100px; object-fit: cover; margin: 20px auto;">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="col-12">
+          <p class="text-center">No hay usuarios disponibles.</p>
+        </div>
+      }
+    </div>
+  </div>
+
+
+  

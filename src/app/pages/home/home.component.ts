@@ -6,6 +6,7 @@ import { IResponse } from '../../interfaces/iresponse';
 
 @Component({
   selector: 'app-home',
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -19,7 +20,7 @@ export class HomeComponent {
 
   async loadUsers() {
     try {
-      const response: IResponse = await this.usersService.getAll(); // Usa la interfaz IResponse
+      const response: IResponse = await this.usersService.getAll(); 
       this.arrUsers = response.results;
       console.log('promesa', response);
     } catch (error) {
