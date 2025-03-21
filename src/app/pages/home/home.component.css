@@ -1,0 +1,12 @@
+.btn-lila {
+    color: #000000; /* Color lila para el texto */
+    background-color: #af87ff; /* Color lila para el borde */
+    
+  }
+  
+  .btn-lila:hover {
+    background-color: #e5ff00; /* Fondo lila al hacer hover */
+    color: rgb(0, 0, 0); /* Texto blanco al hacer hover */
+  }
+
+  

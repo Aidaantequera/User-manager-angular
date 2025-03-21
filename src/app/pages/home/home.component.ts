@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { IUsers } from '../../interfaces/iusers';
 import { UsersService } from '../../services/users.service';
 import { IResponse } from '../../interfaces/iresponse';
+import { ButtonsComponent } from '../../shared/buttons/buttons.component';
 
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ButtonsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -27,4 +28,17 @@ export class HomeComponent {
       console.error('Error al obtener usuarios:', error);
     }
   }
+
+  verDetalle(){
+
+  }
+
+  actualizarUsuario(){
+
+  }
+
+  borrarUsuario(){
+    
+  }
+
 }
