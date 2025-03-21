@@ -1,0 +1,24 @@
+
+
+.btn-lila {
+    color: #9460fc; /* Color texto */
+    padding: 4px 8px;
+    font-size: 12px;
+    
+  }
+  
+  .btn-lila:hover {
+    background-color: #e5ff00; /* Fondo amarillo al hacer hover */
+    color: rgb(0, 0, 0); /* Texto negro al hacer hover */
+  }
+
+  
+  .line {
+    background-color: #000000; /* Línea superior */
+    height: 3px;
+    width: 80%; 
+    margin: 0 auto; 
+  }
+
+
+  
