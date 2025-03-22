@@ -1,1 +1,27 @@
-<p>user-view works!</p>
+ 
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Columna de la imagen -->
+    <div class="col-md-4 text-center">
+      <!-- Imagen del usuario -->
+      <img [src]="theUser.image" alt="{{ theUser.first_name }}" 
+           class="rounded-circle border border-black border-4" 
+           style="width: 200px; height: 200px; object-fit: cover;">
+    </div>
+
+    <!-- Columna de la información del usuario -->
+    <div class="col-md-8">
+      <h2 class="fw-bold">{{ theUser.first_name }} {{ theUser.last_name }}</h2>
+      <hr class="my-3">
+      <p><strong>Nombre Usuario:</strong> {{ theUser.username }}</p>
+      <p><strong>Email:</strong> {{ theUser.email }}</p>
+
+      <!-- Botones -->
+      <div class="mt-4">
+        <button class="btn btn-outline-danger me-2" (click)="eliminarUsuario()">Eliminar</button>
+        <button class="btn btn-outline-dark me-2" (click)="actualizarUsuario()">Actualizar</button>
+        <button class="btn btn-outline-secondary" (click)="volverAlListado()">Volver a listado</button>
+      </div>
+    </div>
+  </div>
+</div>

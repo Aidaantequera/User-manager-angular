@@ -15,11 +15,11 @@ export class UsersService {
     return lastValueFrom(this.httpClient.get<IResponse>(this.endPoint));
   }
 
-  getById(id: string): Promise<IUsers> {
-    return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`));
-  }
+ getById(id: string): Promise<IUsers> {
+  return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`))
 
   
-    };
+ };
+    
   
-
+}
