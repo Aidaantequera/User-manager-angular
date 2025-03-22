@@ -20,7 +20,7 @@
       <div class="mt-4">
         <button class="btn btn-outline-danger me-2" (click)="eliminarUsuario()">Eliminar</button>
         <button class="btn btn-outline-dark me-2" (click)="actualizarUsuario()">Actualizar</button>
-        <button class="btn btn-outline-secondary" (click)="volverAlListado()">Volver a listado</button>
+        <button class="btn btn-outline-secondary" (click)="volverAlListado()" [routerLink]= "['/home']">Volver a listado</button>
       </div>
     </div>
   </div>
