@@ -1,31 +1,22 @@
 <div>
-  <h1 class="text-center p-4">USUARIOS</h1>
+  <h1 class="text-center p-4 mt-5">USUARIOS</h1>
 </div>
 
-<div class="container">
-  <div class="row">
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @for (user of arrUsers; track user._id) {
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex">
-        <div class="card border border-dark border-4 rounded-5 d-flex flex-column h-100">
+      <div class="col d-flex">
+        <div class="card border border-dark border-4 rounded-5 d-flex flex-column h-100 w-100">
           <img [src]="user.image" class="card-img-top border border-dark border-4 rounded-circle"
                alt="Imagen de {{ user.first_name }} {{ user.last_name }}"
                style="width: 100px; height: 100px; object-fit: cover; margin: 20px auto;">
-          <hr class="line">
-          <div class="card-body text-center d-flex flex-column justify-content-between">
+         
+          <div class="card-body text-center d-flex flex-column">
             <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
-            <div class="mt-3 d-flex justify-content-center">
-              <button class="btn btn-outline-secondary me-1"
-                      [routerLink]="['/user', user._id]">
-                Ver Detalle
-              </button>
-              <button class="btn btn-outline-secondary me-1"
-                      [routerLink]="['/updateuser', user._id]">
-                Actualizar
-              </button>
-              <button class="btn btn-outline-danger"
-                      (click)="deleteUser(user._id)">
-                Borrar
-              </button>
+            <div class="mt-auto d-flex justify-content-center gap-2">
+              <button class="btn btn-outline-primary btn-sm border-2" [routerLink]="['/user', user._id]">Ver Detalle</button>
+              <button class="btn btn-outline-secondary btn-sm border-2" [routerLink]="['/updateuser', user._id]">Actualizar</button>
+              <button class="btn borrar btn-outline-danger btn-sm border-2" (click)="deleteUser(user._id)">Borrar</button>
             </div>
           </div>
         </div>
@@ -39,17 +30,26 @@
 
   <!-- Paginación Bootstrap -->
   <nav aria-label="Paginación de usuarios" class="mt-4">
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-center ">
+      <!-- Botón Anterior -->
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <button class="page-link" (click)="prevPage()">Anterior</button>
+        <button class="page-link custom-pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+          Anterior
+        </button>
       </li>
       
+      <!-- Indicador de Página -->
       <li class="page-item disabled">
-        <span class="page-link">Página {{ currentPage }} de {{ totalPages }}</span>
+        <span class="page-link custom-pagination-indicator">
+          Página {{ currentPage }} de {{ totalPages }}
+        </span>
       </li>
-
+  
+      <!-- Botón Siguiente -->
       <li class="page-item" [class.disabled]="currentPage === totalPages">
-        <button class="page-link" (click)="nextPage()">Siguiente</button>
+        <button class="page-link custom-pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Siguiente
+        </button>
       </li>
     </ul>
   </nav>

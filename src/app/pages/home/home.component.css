@@ -1,24 +1,73 @@
 
 
-.btn-lila {
+.btn {
     color: #9460fc; /* Color texto */
+    border-color:  #9460fc;
     padding: 4px 8px;
     font-size: 12px;
     
   }
   
-  .btn-lila:hover {
+  .btn:hover {
     background-color: #e5ff00; /* Fondo amarillo al hacer hover */
-    color: rgb(0, 0, 0); /* Texto negro al hacer hover */
+    
   }
 
-  
-  .line {
-    background-color: #000000; /* Línea superior */
-    height: 3px;
-    width: 80%; 
-    margin: 0 auto; 
+
+  .btn.borrar {
+    color: #9460fc; /* Color texto */
+    border-color:  #9460fc;
+    padding: 4px 8px;
+    font-size: 12px;
+
   }
 
+  .btn.borrar:hover {
+    background-color:  #9460fc;
+    color: white
+
+  }
+ /* Botones de paginación más pequeños con más separación */
+.custom-pagination-btn {
+  background-color: #9460fc; /* Morado */
+  color: white;
+  border: 2px solid #9460fc;
+  font-weight: bold;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  border-radius: 8px; /* Bordes menos redondeados */
+  padding: 6px 12px; /* Padding más pequeño */
+  transition: all 0.3s ease-in-out;
+  margin: 40px 5px; /* Espaciado horizontal entre botones */
+}
+
+/* Efecto hover en amarillo con texto negro */
+.custom-pagination-btn:hover {
+  background-color: #e5ff00;
+  color: black;
+  border-color: #e5ff00;
+}
+
+/* Botón deshabilitado (negro con opacidad reducida) */
+.custom-pagination-btn:disabled {
+  background-color: black;
+  color: white;
+  border-color: black;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estilo del indicador de página */
+.custom-pagination-indicator {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 14px; /* Reducir tamaño de fuente */
+  border-radius: 8px;
+  padding: 6px 12px; /* Padding más pequeño */
+  border: 2px solid black;
+  margin: 40px 8px; /* Espaciado horizontal */
+}
+
+ 
 
   

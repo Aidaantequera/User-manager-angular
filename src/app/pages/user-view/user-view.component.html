@@ -13,9 +13,9 @@
       <p><strong>Email:</strong> {{ theUser?.email }}</p>
 
       <div class="mt-4">
-        <button class="btn btn-outline-danger me-2" (click)="deleteUser(theUser._id)">Borrar</button>
-        <button class="btn btn-outline-dark me-2" [routerLink]="['/updateuser', idUser]">Actualizar</button>
-        <button class="btn btn-outline-secondary" (click)="volverAlListado()" [routerLink]="['/home']">Volver a listado</button>
+        <button class="btn borrar btn-outline-danger border-2 me-1" (click)="deleteUser(theUser._id)">Borrar</button>
+        <button class="btn btn-outline-secondary me-1 border-2" [routerLink]="['/updateuser', idUser]">Actualizar</button>
+        <button class="btn btn-outline-secondary me-1 border-2" (click)="volverAlListado()" [routerLink]="['/home']">Volver a listado</button>
       </div>
     </div>
   </div>
