@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { toast } from 'ngx-sonner';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrl: './user-form.component.css'
 })
 export class UserFormComponent implements OnInit {
-  @Input() idUser: string = "";  // Se usará si el ID viene desde otro componente
+  @Input() idUser: string = "";  
   userForm: FormGroup;
   title: string = "Nuevo Usuario";
   usersService = inject(UsersService);
@@ -22,11 +22,11 @@ export class UserFormComponent implements OnInit {
     // Inicializar el formulario vacío
     this.userForm = new FormGroup({
       _id: new FormControl(null),
-      first_name: new FormControl(""),
-      last_name: new FormControl(""),
-      username: new FormControl(""),
-      email: new FormControl(""),
-      image: new FormControl("")
+      first_name: new FormControl("",[Validators.required]),
+      last_name: new FormControl("",[Validators.required]),
+      username: new FormControl("",[Validators.required]),
+      email: new FormControl("",[Validators.required,Validators.email]),
+      image: new FormControl("",[Validators.required])
     });
   }
 
@@ -59,24 +59,30 @@ export class UserFormComponent implements OnInit {
   }
 
   async getDataForm() {
+    if (this.userForm.invalid) {
+      toast.error("Por favor, completa todos los campos correctamente.");
+      return;
+    }
+    
     try {
       let response;
       if (this.userForm.value._id) {
-        response = await this.usersService.update(this.userForm.value);
+        // 🔹 Ahora pasamos el ID como primer parámetro en update()
+        response = await this.usersService.update(this.userForm.value._id, this.userForm.value);
         toast.success('Usuario actualizado correctamente');
       } else {
         response = await this.usersService.insert(this.userForm.value);
         toast.success('Usuario creado correctamente');
-        
+  
         this.usersService.getAll().then(users => {
           console.log("Usuarios actualizados:", users);
         });
-      
       }
-
+  
       if (response) this.router.navigate(['/home']);
     } catch (error: any) {
       toast.error('Error al guardar el usuario');
     }
   }
+  
 }

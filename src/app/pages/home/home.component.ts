@@ -4,7 +4,7 @@ import { UsersService } from '../../services/users.service';
 import { IResponse } from '../../interfaces/iresponse';
 import { RouterLink } from '@angular/router';
 import { toast } from 'ngx-sonner';
-import Swal from 'sweetalert2'; // 🔹 Importamos SweetAlert2
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -14,54 +14,65 @@ import Swal from 'sweetalert2'; // 🔹 Importamos SweetAlert2
 })
 export class HomeComponent {
   arrUsers: IUsers[] = [];
+  currentPage: number = 1; // 🔹 Página actual
+  totalPages: number = 1;  // 🔹 Total de páginas
   usersService = inject(UsersService);
 
   constructor() {
-    this.loadUsers();
+    this.loadUsers(this.currentPage); // 🔹 Cargar primera página al iniciar
   }
 
-  async loadUsers() {
+  async loadUsers(page: number) {
     try {
-      const response: IResponse = await this.usersService.getAll();
-      this.arrUsers = response.results;
-      console.log('promesa', response);
+      const response: IResponse = await this.usersService.getAll(page);
+      this.arrUsers = response.results; // 🔹 Los usuarios de la página actual
+      this.currentPage = response.page;
+      this.totalPages = response.total_pages;
+      console.log(`Usuarios cargados en página ${this.currentPage}:`, response);
     } catch (error) {
       console.error('Error al obtener usuarios:', error);
     }
   }
-  
-  verDetalle(){
 
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadUsers(this.currentPage);
+    }
   }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadUsers(this.currentPage);
+    }
+  }
+
   async deleteUser(id: string) {
-    console.log("Intentando eliminar usuario con ID:", id); // 🔹 Verifica el ID en la consola
-  
     if (!id) {
       Swal.fire("Error", "ID de usuario inválido.", "error");
       return;
     }
-  
+
     const result = await Swal.fire({
       title: "¿Estás seguro?",
       text: "Esta acción no se puede deshacer.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#9460fc",
-      cancelButtonColor: "#9460fc",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar"
     });
-  
+
     if (!result.isConfirmed) return;
-  
+
     try {
       const response = await this.usersService.deleteUser(id);
-      console.log("Respuesta de la API al eliminar:", response); // 🔹 Verifica la respuesta de la API
-  
-      if (response._id) { // La API devuelve el usuario en lugar de eliminarlo
+      console.log("Respuesta de la API al eliminar:", response);
+
+      if (response._id) {
         Swal.fire("Usuario Eliminado", "El usuario ha sido eliminado correctamente.", "success");
-  
-        // 🔹 Ocultar el usuario manualmente en la lista
         this.arrUsers = this.arrUsers.filter(user => user._id !== id);
       } else {
         Swal.fire("Error", response.error || "No se pudo eliminar el usuario.", "error");
@@ -70,5 +81,4 @@ export class HomeComponent {
       Swal.fire("Error", "Error al eliminar el usuario.", "error");
     }
   }
-  
 }

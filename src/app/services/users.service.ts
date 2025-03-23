@@ -1,35 +1,38 @@
-import { inject, Injectable } from '@angular/core';
-import { IUsers } from '../interfaces/iusers';
-import { lastValueFrom } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 import { IResponse } from '../interfaces/iresponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private endPoint: string = "https://peticiones.online/api/users";
-  private httpClient = inject(HttpClient);
+  private endPoint = 'https://peticiones.online/api/users';
+  private http = inject(HttpClient);
 
-  getAll(): Promise<IResponse> {
-    return lastValueFrom(this.httpClient.get<IResponse>(this.endPoint));
+  // 🔹 Obtener usuarios con paginación
+  async getAll(page: number = 1): Promise<IResponse> {
+    return lastValueFrom(this.http.get<IResponse>(`${this.endPoint}?page=${page}`));
   }
 
-  getById(id: string): Promise<IUsers> {
-    console.log('ID pasado a getById:', id);
-    return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`));
+  // 🔹 Obtener un usuario por ID
+  async getById(id: string): Promise<any> {
+    return lastValueFrom(this.http.get<any>(`${this.endPoint}/${id}`));
   }
 
-  insert(user: IUsers): Promise<IUsers> {
-    return lastValueFrom(this.httpClient.post<IUsers>(this.endPoint, user));
+  // 🔹 Insertar un usuario
+  async insert(userData: any): Promise<any> {
+    return lastValueFrom(this.http.post<any>(this.endPoint, userData));
   }
 
-  update(user: IUsers): Promise<IUsers> {
-    return lastValueFrom(this.httpClient.put<IUsers>(`${this.endPoint}/${user._id}`, user));
-  }
-
-  async deleteUser(_id: string): Promise<any> {
-    return lastValueFrom(this.httpClient.delete<any>(`https://peticiones.online/api/users/${_id}`));
+  // 🔹 Actualizar un usuario
+  async update(id: string, userData: any): Promise<any> {
+    return lastValueFrom(this.http.put<any>(`https://peticiones.online/api/users/${id}`, userData));
   }
   
+
+  // 🔹 Eliminar un usuario
+  async deleteUser(id: string): Promise<any> {
+    return lastValueFrom(this.http.delete<any>(`${this.endPoint}/${id}`));
+  }
 }
