@@ -14,36 +14,27 @@ export class UserViewComponent {
   @Input() idUser: string = ""; // Recibe el ID como input
   theUser!: IUsers | any; // Datos del usuario
   usersService = inject(UsersService); // Inyección del servicio
+
+  async ngOnInit() {
+    console.log(this.idUser);
+
+    try {
+      this.theUser = await this.usersService.getById(this.idUser);
+      console.log(this.theUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  eliminarUsuario() {
+   
+  }
+
+  actualizarUsuario() {
   
-
-async ngOnInit() {
-  console.log (this.idUser)
-
-  try{
-     this.theUser = await this.usersService.getById(this.idUser)
-     console.log(this.theUser)
-    
-  }catch(error){
-    console.log(error)
   }
- 
-    
+
+  volverAlListado() {
+   
+  }
 }
-
-  eliminarUsuario(){
-
-  }
-
-
-  actualizarUsuario(){
-
-  }
-
-
-  volverAlListado(){
-
-  }
-
-}
-
-

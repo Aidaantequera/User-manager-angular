@@ -1,6 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IUsers } from '../../interfaces/iusers';
 import { UsersService } from '../../services/users.service';
 import { toast } from 'ngx-sonner';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,64 +10,73 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
-export class UserFormComponent {
-  @Input() idUser: string = "";
-  UserForm: FormGroup = new FormGroup({}, []);
-  user!: IUsers;
+export class UserFormComponent implements OnInit {
+  @Input() idUser: string = "";  // Se usará si el ID viene desde otro componente
+  userForm: FormGroup;
+  title: string = "Nuevo Usuario";
   usersService = inject(UsersService);
-  title: string = "Guardar";
   router = inject(Router);
   route = inject(ActivatedRoute);
 
-  async ngOnInit() {
-    this.route.params.subscribe(async params => {
-      this.idUser = params['id'];
+  constructor() {
+    // Inicializar el formulario vacío
+    this.userForm = new FormGroup({
+      _id: new FormControl(null),
+      first_name: new FormControl(""),
+      last_name: new FormControl(""),
+      username: new FormControl(""),
+      email: new FormControl(""),
+      image: new FormControl("")
+    });
+  }
 
-      if (this.idUser) {
-        this.title = 'ACTUALIZAR';
+  async ngOnInit() {
+    // Verificar si hay un ID en la ruta
+    this.route.params.subscribe(async params => {
+      if (params['id']) {
+        this.idUser = params['id'];
+        this.title = "Actualizar Usuario";
+
         try {
-          this.user = await this.usersService.getById(this.idUser);
-          this.UserForm = new FormGroup({
-            _id: new FormControl(this.user._id, []),
-            first_name: new FormControl(this.user.first_name, []),
-            last_name: new FormControl(this.user.last_name, []),
-            username: new FormControl(this.user.username, []),
-            email: new FormControl(this.user.email, []),
-            image: new FormControl(this.user.image, []),
+          const user = await this.usersService.getById(this.idUser);
+          console.log('Datos del usuario obtenidos:', user);
+          
+          // Cargar los datos en el formulario
+          this.userForm.setValue({
+            _id: user._id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            username: user.username,
+            email: user.email,
+            image: user.image
           });
-        } catch (msg: any) {
-          toast.error(msg.error.error);
+
+        } catch (error: any) {
+          toast.error("Error al obtener el usuario.");
         }
-      } else {
-        this.title = 'NUEVO';
-        this.UserForm = new FormGroup({
-          _id: new FormControl(null, []),
-          first_name: new FormControl("", []),
-          last_name: new FormControl("", []),
-          username: new FormControl("", []),
-          email: new FormControl("", []),
-          image: new FormControl("", []),
-        });
       }
     });
   }
 
   async getDataForm() {
-    let response: IUsers | any;
     try {
-      if (this.UserForm.value._id) {
-        response = await this.usersService.update(this.UserForm.value);
+      let response;
+      if (this.userForm.value._id) {
+        response = await this.usersService.update(this.userForm.value);
+        toast.success('Usuario actualizado correctamente');
       } else {
-        response = await this.usersService.insert(this.UserForm.value);
+        response = await this.usersService.insert(this.userForm.value);
+        toast.success('Usuario creado correctamente');
+        
+        this.usersService.getAll().then(users => {
+          console.log("Usuarios actualizados:", users);
+        });
+      
       }
 
-      if (response.createdAt || response.updatedAt) {
-        this.router.navigate(['/home']);
-      }
-    } catch (msg: any) {
-      if (msg.status === 400) {
-        msg.error.forEach((oneError: any) => toast.error(oneError.message));
-      }
+      if (response) this.router.navigate(['/home']);
+    } catch (error: any) {
+      toast.error('Error al guardar el usuario');
     }
   }
 }
