@@ -15,9 +15,9 @@
               <div class="mt-3 d-flex justify-content-center">
                 <button class="btn btn-outline-secondary  btn-lila me-1 rounded-0 border-0" (click)="verDetalle()"
                 [routerLink]="['/user', user._id]">Ver Detalle</button>
-                <button class="btn btn-outline-secondary  btn-lila me-1 rounded-0 border-0" (click)="actualizarUsuario()"
+                <button class="btn btn-outline-secondary  btn-lila me-1 rounded-0 border-0" (click)="loadUsers()"
                 [routerLink]= "['/updateuser', user._id]">Actualizar</button>
-                <button class="btn btn-outline-secondary  btn-lila rounded-0 border-0" (click)="borrarUsuario()">Borrar</button>
+                <button class="btn btn-outline-secondary  btn-lila rounded-0 border-0" (click)="deleteUser(user._id)">Borrar</button>
               </div>
             </div>
           </div>

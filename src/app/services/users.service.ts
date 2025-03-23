@@ -28,7 +28,8 @@ export class UsersService {
     return lastValueFrom(this.httpClient.put<IUsers>(`${this.endPoint}/${user._id}`, user));
   }
 
-  delete(id: string): Promise<any> {
-    return lastValueFrom(this.httpClient.delete<any>(`${this.endPoint}/${id}`));
+  async deleteUser(_id: string): Promise<any> {
+    return lastValueFrom(this.httpClient.delete<any>(`https://peticiones.online/api/users/${_id}`));
   }
+  
 }
