@@ -14,18 +14,18 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent {
   arrUsers: IUsers[] = [];
-  currentPage: number = 1; // 🔹 Página actual
-  totalPages: number = 1;  // 🔹 Total de páginas
+  currentPage: number = 1;
+  totalPages: number = 1; 
   usersService = inject(UsersService);
 
   constructor() {
-    this.loadUsers(this.currentPage); // 🔹 Cargar primera página al iniciar
+    this.loadUsers(this.currentPage); 
   }
 
   async loadUsers(page: number) {
     try {
       const response: IResponse = await this.usersService.getAll(page);
-      this.arrUsers = response.results; // 🔹 Los usuarios de la página actual
+      this.arrUsers = response.results; 
       this.currentPage = response.page;
       this.totalPages = response.total_pages;
       console.log(`Usuarios cargados en página ${this.currentPage}:`, response);

@@ -1,9 +1,9 @@
-/* 🔹 Estilos generales del formulario */
+
 .container {
     max-width: 600px;
   }
   
-  /* 🔹 Estilo de los inputs */
+
   .custom-input {
     border: 2px solid black;
     border-radius: 8px;
@@ -12,16 +12,16 @@
     transition: border-color 0.3s ease, background-color 0.3s ease;
   }
   
-  /* 🟣 Hover y focus con borde morado */
+  
   .custom-input:focus {
     border-color: #9460fc;
-    background-color: #f5f3ff; /* Fondo ligeramente morado */
+    background-color: #f5f3ff; 
     outline: none;
   }
   
-  /* 🔹 Estilo del botón */
+
   .custom-btn {
-    background-color: #9460fc; /* Morado */
+    background-color: #9460fc;
     color: white;
     border: 2px solid #9460fc;
     font-size: 16px;
@@ -31,14 +31,14 @@
     transition: all 0.3s ease-in-out;
   }
   
-  /* 🟡 Hover del botón: amarillo con texto negro */
+
   .custom-btn:hover {
     background-color: #e5ff00;
     color: black;
     border-color: #e5ff00;
   }
   
-  /* 🔹 Botón deshabilitado */
+ 
   .custom-btn:disabled {
     background-color: black;
     color: white;
@@ -46,7 +46,7 @@
     cursor: not-allowed;
   }
   
-  /* 🔹 Estilos para los mensajes de error */
+ 
   .text-danger {
     font-size: 14px;
     font-weight: bold;

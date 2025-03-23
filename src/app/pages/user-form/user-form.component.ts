@@ -19,7 +19,6 @@ export class UserFormComponent implements OnInit {
   route = inject(ActivatedRoute);
 
   constructor() {
-    // Inicializar el formulario vacío
     this.userForm = new FormGroup({
       _id: new FormControl(null),
       first_name: new FormControl("",[Validators.required]),
@@ -31,7 +30,7 @@ export class UserFormComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // Verificar si hay un ID en la ruta
+  
     this.route.params.subscribe(async params => {
       if (params['id']) {
         this.idUser = params['id'];
@@ -41,7 +40,7 @@ export class UserFormComponent implements OnInit {
           const user = await this.usersService.getById(this.idUser);
           console.log('Datos del usuario obtenidos:', user);
           
-          // Cargar los datos en el formulario
+         
           this.userForm.setValue({
             _id: user._id,
             first_name: user.first_name,
@@ -67,7 +66,6 @@ export class UserFormComponent implements OnInit {
     try {
       let response;
       if (this.userForm.value._id) {
-        // 🔹 Ahora pasamos el ID como primer parámetro en update()
         response = await this.usersService.update(this.userForm.value._id, this.userForm.value);
         toast.success('Usuario actualizado correctamente');
       } else {

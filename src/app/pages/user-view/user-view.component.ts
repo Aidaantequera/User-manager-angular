@@ -12,9 +12,9 @@ import Swal from 'sweetalert2';
   styleUrl: './user-view.component.css'
 })
 export class UserViewComponent {
-  @Input() idUser: string = ""; // Recibe el ID como input
-  theUser!: IUsers | any; // Datos del usuario
-  usersService = inject(UsersService); // Inyección del servicio
+  @Input() idUser: string = ""; 
+  theUser!: IUsers | any; 
+  usersService = inject(UsersService); 
   arrUsers: IUsers[] = [];
   router = inject(Router);
 
@@ -30,7 +30,7 @@ export class UserViewComponent {
   }
 
   async deleteUser(id: string) {
-      console.log("Intentando eliminar usuario con ID:", id); // 🔹 Verifica el ID en la consola
+      console.log("Intentando eliminar usuario con ID:", id); 
     
       if (!id) {
         Swal.fire("Error", "ID de usuario inválido.", "error");
@@ -52,12 +52,12 @@ export class UserViewComponent {
     
       try {
         const response = await this.usersService.deleteUser(id);
-        console.log("Respuesta de la API al eliminar:", response); // 🔹 Verifica la respuesta de la API
+        console.log("Respuesta de la API al eliminar:", response); 
     
-        if (response._id) { // La API devuelve el usuario en lugar de eliminarlo
+        if (response._id) { 
           Swal.fire("Usuario Eliminado", "El usuario ha sido eliminado correctamente.", "success");
     
-          // 🔹 Ocultar el usuario manualmente en la lista
+         
           this.arrUsers = this.arrUsers.filter(user => user._id !== id);
           setTimeout(() => {
             this.router.navigate(['/home']);
@@ -75,6 +75,6 @@ export class UserViewComponent {
   }
 
   volverAlListado() {
-    this.router.navigate(['/home']); // 🔹 Redirigir a home al hacer clic en "Volver a listado"
+    this.router.navigate(['/home']); 
   }
 }

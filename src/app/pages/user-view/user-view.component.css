@@ -1,6 +1,6 @@
 
 .btn {
-    color: #9460fc; /* Color texto */
+    color: #9460fc; 
     border-color:  #9460fc;
     padding: 4px 8px;
     font-size: 14px;
@@ -8,7 +8,7 @@
   }
   
   .btn:hover {
-    background-color: #9460fc; /* Fondo amarillo al hacer hover */
+    background-color: #9460fc; 
     color: white;
     
   }

@@ -30,24 +30,24 @@
     }
   </div>
 
-  <!-- Paginación Bootstrap -->
+  
   <nav aria-label="Paginación de usuarios" class="mt-4">
     <ul class="pagination justify-content-center ">
-      <!-- Botón Anterior -->
+     
       <li class="page-item" [class.disabled]="currentPage === 1">
         <button class="page-link custom-pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
           Anterior
         </button>
       </li>
       
-      <!-- Indicador de Página -->
+      
       <li class="page-item disabled">
         <span class="page-link custom-pagination-indicator">
           Página {{ currentPage }} de {{ totalPages }}
         </span>
       </li>
   
-      <!-- Botón Siguiente -->
+     
       <li class="page-item" [class.disabled]="currentPage === totalPages">
         <button class="page-link custom-pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
           Siguiente
