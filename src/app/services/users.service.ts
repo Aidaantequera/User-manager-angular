@@ -17,9 +17,19 @@ export class UsersService {
 
  getById(id: string): Promise<IUsers> {
   return lastValueFrom(this.httpClient.get<IUsers>(`${this.endPoint}/${id}`))
+};
 
+  // Insertar usuario (crear nuevo)
+  insert(user: IUsers): Promise<IUsers> {
+    return lastValueFrom(this.httpClient.post<IUsers>(this.endPoint, user));
+  }
+
+  // Actualizar usuario
+  update(user: IUsers): Promise<IUsers> {
+    return lastValueFrom(this.httpClient.put<IUsers>(`${this.endPoint}/${user._id}`, user));
+  }
   
- };
+ 
     
   
 }
