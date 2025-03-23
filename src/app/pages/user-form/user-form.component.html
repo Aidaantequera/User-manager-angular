@@ -1,5 +1,5 @@
 <section class="container">
-  <h1 class="text-3xl font-bold mb-4">{{ title }} </h1>
+  <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
   <hr>
 
   <form class="max-w-screen-md mx-auto p-6 bg-white rounded-lg shadow-md"
@@ -8,30 +8,52 @@
 
     <input type="hidden" formControlName="_id">
 
+    <!-- Nombre -->
     <div class="mb-5">
       <label for="first_name" class="form-label">Nombre Usuario</label>
       <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="Introduce nombre de usuario">
+      @if (userForm.get('first_name')?.invalid && userForm.get('first_name')?.touched) {
+        <div class="text-red-500 text-sm">El nombre es obligatorio.</div>
+      }
     </div>
 
+    <!-- Apellidos -->
     <div class="mb-5">
       <label for="last_name" class="form-label">Apellidos Usuario</label>
       <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Introduce apellido de usuario">
+      @if (userForm.get('last_name')?.invalid && userForm.get('last_name')?.touched) {
+        <div class="text-red-500 text-sm">Los apellidos son obligatorios.</div>
+      }
     </div>
 
+    
 
+    <!-- Email -->
     <div class="mb-5">
       <label for="email" class="form-label">Email Usuario</label>
       <input type="email" class="form-control" id="email" formControlName="email" placeholder="Introduce email de usuario">
+      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+        <div class="text-red-500 text-sm">
+          @if (userForm.get('email')?.errors?.['required']) { El email es obligatorio. }
+          @if (userForm.get('email')?.errors?.['email']) { Formato de email no válido. }
+        </div>
+      }
     </div>
 
+    <!-- Imagen -->
     <div class="mb-5">
       <label for="image" class="form-label">Imagen Usuario</label>
       <input type="url" class="form-control" id="image" formControlName="image" placeholder="Introduce URL de foto usuario">
+      @if (userForm.get('image')?.invalid && userForm.get('image')?.touched) {
+        <div class="text-red-500 text-sm">La URL de la imagen es obligatoria.</div>
+      }
     </div>
 
+    <!-- Botón de Guardar/Actualizar -->
     <div class="flex justify-end">
       <input type="submit"
              class="px-6 py-3 bg-blue-500 text-white text-lg rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+             [disabled]="userForm.invalid"
              [value]="idUser ? 'Actualizar' : 'Guardar'">
     </div>
   </form>
