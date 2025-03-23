@@ -62,21 +62,22 @@ export class UserFormComponent implements OnInit {
     try {
       let response;
       if (this.userForm.value._id) {
-        response = await this.usersService.update(this.userForm.value);
+        // 🔹 Ahora pasamos el ID como primer parámetro en update()
+        response = await this.usersService.update(this.userForm.value._id, this.userForm.value);
         toast.success('Usuario actualizado correctamente');
       } else {
         response = await this.usersService.insert(this.userForm.value);
         toast.success('Usuario creado correctamente');
-        
+  
         this.usersService.getAll().then(users => {
           console.log("Usuarios actualizados:", users);
         });
-      
       }
-
+  
       if (response) this.router.navigate(['/home']);
     } catch (error: any) {
       toast.error('Error al guardar el usuario');
     }
   }
+  
 }
