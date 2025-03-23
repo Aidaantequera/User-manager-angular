@@ -1,0 +1,26 @@
+
+.btn {
+    color: #9460fc; /* Color texto */
+    border-color:  #9460fc;
+    padding: 4px 8px;
+    font-size: 14px;
+    
+  }
+  
+  .btn:hover {
+    background-color: #9460fc; /* Fondo amarillo al hacer hover */
+    color: white;
+    
+  }
+
+  .btn.borrar {
+    border-color:  #e5ff00;
+    color: black;
+
+  }
+
+  .btn.borrar:hover {
+    background-color:  #e5ff00;
+    color: black;
+
+  }
