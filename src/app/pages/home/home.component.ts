@@ -5,6 +5,7 @@ import { IResponse } from '../../interfaces/iresponse';
 import { RouterLink } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-home',
   imports: [RouterLink],
@@ -42,3 +43,4 @@ export class HomeComponent {
   }
 
 }
+

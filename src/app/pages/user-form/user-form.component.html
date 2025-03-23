@@ -1,1 +1,43 @@
-<p>user-form works!</p>
+<section class="container">
+    <div>
+      <h1 class="mx-auto p-4 m-4 text-center text-2xl font-bold" style="width: 400px;">{{title}} USUARIO</h1>
+    </div>
+    <hr>
+  
+    <form class="max-w-screen-md mx-auto p-6 bg-white rounded-lg shadow-md" [formGroup]="UserForm" (ngSubmit)="getDataForm()">
+      <input type="hidden" formControlName="_id">
+  
+      <!-- Nombre -->
+      <div class="mb-5">
+        <label for="nombre" class="form-label">Nombre Usuario</label>
+        <input type="nombre" class="form-control" id="nombre"
+          placeholder="Introduce nombre de usuario">
+      </div>
+  
+      <!-- Apellidos -->
+      <div class="mb-5">
+        <label for="apellidos" class="form-label">Apellidos Usuario</label>
+        <input type="apellidos" class="form-control" id="apellidos" placeholder="Introduce apellido de usuario">
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-5">
+        <label for="email" class="form-label">Email Usuario</label>
+         <input type="email" class="form-control" id="email" placeholder="Introduce email de usuario">
+      </div>
+  
+      <!-- Imagen -->
+      <div class="mb-5">
+        <label for="imagen" class="form-label">Imagen Usuario</label>
+        <input type="url"  class="form-control"  id="imagen" placeholder="Introduce URL de foto usuario">
+      </div>
+  
+      <!-- Botón Guardar -->
+      <div class="flex justify-end">
+        <input type="submit"
+          class="px-6 py-3 bg-blue-500 text-white text-lg rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          [value]="UserForm.get('_id')?.value? 'Actualizar' : 'Guardar'">
+      </div>
+    </form>
+  </section>
+  
