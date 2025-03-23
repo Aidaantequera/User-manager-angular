@@ -14,9 +14,11 @@
           <div class="card-body text-center d-flex flex-column">
             <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
             <div class="mt-auto d-flex justify-content-center gap-2">
-              <button class="btn btn-outline-primary btn-sm border-2" [routerLink]="['/user', user._id]">Ver Detalle</button>
-              <button class="btn btn-outline-secondary btn-sm border-2" [routerLink]="['/updateuser', user._id]">Actualizar</button>
-              <button class="btn borrar btn-outline-danger btn-sm border-2" (click)="deleteUser(user._id)">Borrar</button>
+              <button class="btn btn-outline-primary btn-sm border-2" [routerLink]="['/user', user._id]">
+                <i class="bi bi-eye"></i>
+                <span>Ver Detalle</span></button>
+              <button class="btn btn-outline-secondary btn-sm border-2" [routerLink]="['/updateuser', user._id]"><i class="bi bi-pencil"></i>Actualizar</button>
+              <button class="btn borrar btn-outline-danger btn-sm border-2" (click)="deleteUser(user._id)"><i class="bi bi-trash"></i>Borrar</button>
             </div>
           </div>
         </div>
