@@ -2,7 +2,18 @@
   <h1 class="text-center p-4 mt-5">USUARIOS</h1>
 </div>
 
-<div class="container mt-5">
+<!-- Paginación arriba -->
+<nav aria-label="Paginación de usuarios" class="pagination-nav">
+  <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+    &lt;
+  </button>
+  <span class="page-indicator"> {{ currentPage }} / {{ totalPages }} </span>
+  <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+    &gt;
+  </button>
+</nav>
+
+<div class="container mt-4">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @for (user of arrUsers; track user._id) {
       <div class="col d-flex">
@@ -16,9 +27,13 @@
             <div class="mt-auto d-flex justify-content-center gap-2">
               <button class="btn btn-outline-primary btn-sm border-2" [routerLink]="['/user', user._id]">
                 <i class="bi bi-eye"></i>
-                <span>Ver Detalle</span></button>
-              <button class="btn btn-outline-secondary btn-sm border-2" [routerLink]="['/updateuser', user._id]"><i class="bi bi-pencil"></i>Actualizar</button>
-              <button class="btn borrar btn-outline-danger btn-sm border-2" (click)="deleteUser(user._id)"><i class="bi bi-trash"></i>Borrar</button>
+              </button>
+              <button class="btn btn-outline-secondary btn-sm border-2" [routerLink]="['/updateuser', user._id]">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn borrar btn-outline-danger btn-sm border-2" (click)="deleteUser(user._id)">
+                <i class="bi bi-trash"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -29,30 +44,4 @@
       </div>
     }
   </div>
-
-  
-  <nav aria-label="Paginación de usuarios" class="mt-4">
-    <ul class="pagination justify-content-center ">
-     
-      <li class="page-item" [class.disabled]="currentPage === 1">
-        <button class="page-link custom-pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
-          Anterior
-        </button>
-      </li>
-      
-      
-      <li class="page-item disabled">
-        <span class="page-link custom-pagination-indicator">
-          Página {{ currentPage }} de {{ totalPages }}
-        </span>
-      </li>
-  
-     
-      <li class="page-item" [class.disabled]="currentPage === totalPages">
-        <button class="page-link custom-pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
-          Siguiente
-        </button>
-      </li>
-    </ul>
-  </nav>
 </div>

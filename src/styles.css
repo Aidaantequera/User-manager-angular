@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+/* === ESTILOS GLOBALES SUNSET THEME === */
+/* Aplicar a toda la aplicación */
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) fixed;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Asegurar que el fondo cubra todo sin líneas */
+app-root {
+  min-height: 100vh;
+  display: block;
+  background: transparent;
+}
+
+/* Eliminar cualquier línea o borde del contenedor principal */
+.container, .container-fluid {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Asegurar que no haya líneas en bootstrap */
+.row {
+  margin: 0;
+}
+
+main {
+  background: transparent;
+  min-height: calc(100vh - 80px);
+}
+
+/* Estilos mejorados para enlaces */
+a {
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar personalizada para mejor aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1);
+}

@@ -1,26 +1,80 @@
+/* === USER VIEW SUNSET THEME === */
 
-.btn {
-    color: #9460fc; 
-    border-color:  #9460fc;
-    padding: 4px 8px;
-    font-size: 14px;
-    
-  }
-  
-  .btn:hover {
-    background-color: #9460fc; 
-    color: white;
-    
-  }
+.user-view .container {
+  background: #ffffff !important;  /* blanco sólido */
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  padding: 2.5rem;
+  margin-top: 2rem;
+  color: #333;
+}
 
-  .btn.borrar {
-    border-color:  #e5ff00;
-    color: black;
+/* Imagen de perfil grande */
+.user-view img {
+  border: 4px solid rgba(102, 126, 234, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
 
-  }
+.user-view img:hover {
+  transform: scale(1.05);
+  border-color: rgba(102, 126, 234, 0.7) !important;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
 
-  .btn.borrar:hover {
-    background-color:  #e5ff00;
-    color: black;
+/* Títulos y texto */
+.user-view h2 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
 
-  }
+.user-view p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.user-view strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.user-view hr {
+  border-color: rgba(102, 126, 234, 0.3);
+  border-width: 2px;
+}
+
+/* Botones */
+.user-view .btn {
+  font-weight: 600;
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.user-view .btn-outline-secondary {
+  background: linear-gradient(45deg, #667eea, #764ba2) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.user-view .btn-outline-secondary:hover {
+  background: linear-gradient(45deg, #5a67d8, #6b46c1) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.user-view .btn.borrar {
+  background: linear-gradient(45deg, #ef4444, #dc2626) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.user-view .btn.borrar:hover {
+  background: linear-gradient(45deg, #dc2626, #b91c1c) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}

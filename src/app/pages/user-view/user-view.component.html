@@ -1,21 +1,23 @@
-<div class="container mt-5">
-  <div class="row align-items-center">
-    <div class="col-md-4 text-center">
-      <img [src]="theUser?.image" alt="{{ theUser?.first_name }}" 
-           class="rounded-circle border border-black border-4" 
-           style="width: 200px; height: 200px; object-fit: cover;">
-    </div>
+<div class="user-view">
+  <div class="container mt-5">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center">
+        <img [src]="theUser?.image" alt="{{ theUser?.first_name }}" 
+             class="rounded-circle border border-black border-4" 
+             style="width: 200px; height: 200px; object-fit: cover;">
+      </div>
 
-    <div class="col-md-8">
-      <h2 class="fw-bold">{{ theUser?.first_name }} {{ theUser?.last_name }}</h2>
-      <hr class="my-3">
-      <p><strong>Nombre Usuario:</strong> {{ theUser?.username }}</p>
-      <p><strong>Email:</strong> {{ theUser?.email }}</p>
+      <div class="col-md-8">
+        <h2 class="fw-bold">{{ theUser?.first_name }} {{ theUser?.last_name }}</h2>
+        <hr class="my-3">
+        <p><strong>Nombre Usuario:</strong> {{ theUser?.username }}</p>
+        <p><strong>Email:</strong> {{ theUser?.email }}</p>
 
-      <div class="mt-4">
-        <button class="btn borrar btn-outline-danger border-2 me-1" (click)="deleteUser(theUser._id)">Borrar</button>
-        <button class="btn btn-outline-secondary me-1 border-2" [routerLink]="['/updateuser', idUser]">Actualizar</button>
-        <button class="btn btn-outline-secondary me-1 border-2" (click)="volverAlListado()" [routerLink]="['/home']">Volver a listado</button>
+        <div class="mt-4">
+          <button class="btn borrar btn-outline-danger border-2 me-1" (click)="deleteUser(theUser._id)">Borrar</button>
+          <button class="btn btn-outline-secondary me-1 border-2" [routerLink]="['/updateuser', idUser]">Actualizar</button>
+          <button class="btn btn-outline-secondary me-1 border-2" (click)="volverAlListado()" [routerLink]="['/home']">Volver a listado</button>
+        </div>
       </div>
     </div>
   </div>
