@@ -1,14 +1,13 @@
 <section class="container my-5">
   <h1 class="text-center fw-bold mb-4">{{ title }}</h1>
 
-
   <form class="max-w-screen-md mx-auto p-5 bg-white rounded-4 shadow-lg border border-dark"
         [formGroup]="userForm"
         (ngSubmit)="getDataForm()">
 
     <input type="hidden" formControlName="_id">
 
-
+    <!-- Nombre -->
     <div class="mb-4">
       <label for="first_name" class="form-label fw-bold">Nombre Usuario</label>
       <input type="text" class="form-control custom-input" id="first_name" formControlName="first_name" placeholder="Introduce nombre de usuario">
@@ -17,7 +16,7 @@
       }
     </div>
 
-
+    <!-- Apellidos -->
     <div class="mb-4">
       <label for="last_name" class="form-label fw-bold">Apellidos Usuario</label>
       <input type="text" class="form-control custom-input" id="last_name" formControlName="last_name" placeholder="Introduce apellido de usuario">
@@ -26,7 +25,16 @@
       }
     </div>
 
- 
+    <!-- Username -->
+    <div class="mb-4">
+      <label for="username" class="form-label fw-bold">Nombre de usuario</label>
+      <input type="text" class="form-control custom-input" id="username" formControlName="username" placeholder="Introduce username">
+      @if (userForm.get('username')?.invalid && userForm.get('username')?.touched) {
+        <div class="text-danger text-sm mt-1">El username es obligatorio.</div>
+      }
+    </div>
+
+    <!-- Email -->
     <div class="mb-4">
       <label for="email" class="form-label fw-bold">Email Usuario</label>
       <input type="email" class="form-control custom-input" id="email" formControlName="email" placeholder="Introduce email de usuario">
@@ -38,7 +46,7 @@
       }
     </div>
 
-  
+    <!-- Imagen -->
     <div class="mb-4">
       <label for="image" class="form-label fw-bold">Imagen Usuario</label>
       <input type="url" class="form-control custom-input" id="image" formControlName="image" placeholder="Introduce URL de foto usuario">
@@ -47,12 +55,11 @@
       }
     </div>
 
- 
+    <!-- Botón -->
     <div class="text-center">
-      <input type="submit"
-             class="btn custom-btn"
-             
-             [value]="idUser ? 'Actualizar' : 'Guardar'">
+      <button type="submit" class="btn custom-btn">
+        {{ idUser ? 'Actualizar' : 'Guardar' }}
+      </button>
     </div>
   </form>
 </section>
