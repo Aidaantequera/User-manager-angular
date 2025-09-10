@@ -1,59 +1,124 @@
-# Actividad6
+# User Manager - Angular CRUD Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+Una aplicación completa de gestión de usuarios desarrollada con Angular que demuestra el consumo de APIs externas y la implementación de todas las operaciones CRUD.
 
-## Development server
+## 🚀 Descripción del Proyecto
 
-To start a local development server, run:
+Este proyecto fue desarrollado como parte del aprendizaje de Angular, enfocándose en la integración con APIs REST externas. La aplicación permite gestionar usuarios de forma completa con una interfaz moderna y responsive.
 
+## ✨ Características Principales
+
+- **🌐 Consumo de API REST externa** - Integración completa con servicios web
+- **🛣️ Sistema de rutas dinámicas** - Navegación fluida entre vistas
+- **📝 CRUD completo** - Crear, leer, actualizar y eliminar usuarios
+- **🔧 Componentes reutilizables** - Arquitectura modular y escalable
+- **✅ Formularios reactivos** - Validaciones en tiempo real
+- **📱 Diseño responsive** - Compatible con desktop y mobile
+- **🎨 Interfaz moderna** - Usando Bootstrap y SweetAlert2
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Angular 19.1.5** - Framework principal
+- **TypeScript** - Lenguaje de programación
+- **Bootstrap** - Framework CSS
+- **SweetAlert2** - Alertas elegantes
+- **API REST** - Integración con servicios externos
+
+## 📋 Funcionalidades
+
+### Rutas Implementadas
+- `/home` - Listado de usuarios en formato grid
+- `/user/:id` - Vista detalle de usuario específico
+- `/newuser` - Formulario para crear nuevo usuario
+- `/updateuser/:id` - Formulario para editar usuario existente
+
+### Validaciones
+- ✅ Campos obligatorios
+- ✅ Formato de email válido
+- ✅ Validación en tiempo real
+- ✅ Mensajes de error personalizados
+
+### Operaciones CRUD
+- **Create** - Registro de nuevos usuarios
+- **Read** - Visualización de lista y detalles
+- **Update** - Edición de usuarios existentes
+- **Delete** - Eliminación con confirmación
+
+## 🚀 Instalación y Uso
+
+### Prerrequisitos
+- Node.js (versión 18 o superior)
+- Angular CLI
+
+### Pasos de instalación
+
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/Aidaantequera/User-manager-angular.git
+cd User-manager-angular
+```
+
+2. **Instalar dependencias**
+```bash
+npm install
+```
+
+3. **Ejecutar la aplicación**
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. **Abrir en el navegador**
+Navegar a `http://localhost:4200/`
 
-## Code scaffolding
+La aplicación se recargará automáticamente cuando modifiques los archivos fuente.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🔧 Comandos de Desarrollo
 
+### Servidor de desarrollo
+```bash
+ng serve
+```
+
+### Generar componentes
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
+### Compilar el proyecto
 ```bash
 ng build
 ```
+Los artefactos de compilación se almacenarán en el directorio `dist/`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+### Ejecutar pruebas unitarias
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+### Ejecutar pruebas end-to-end
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📚 Lo que se Aprendió
 
-## Additional Resources
+- 🏗️ Arquitectura de componentes en Angular
+- 🛣️ Manejo de rutas y parámetros
+- 🌐 Consumo de APIs REST
+- 📝 Formularios reactivos y validaciones
+- 🎨 Diseño responsive y principios UX/UI
+- 🔄 Comunicación entre componentes
+- 🚀 Servicios e inyección de dependencias
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📱 Vista Previa
+
+El proyecto incluye diseños responsive que se adaptan tanto a desktop como a dispositivos móviles, garantizando una experiencia de usuario óptima en todas las plataformas.
+
+## 📖 Recursos Adicionales
+
+Para más información sobre Angular CLI, incluyendo referencias detalladas de comandos, visita la [documentación oficial de Angular CLI](https://angular.dev/tools/cli).
+
+---
+
+*Proyecto desarrollado como parte del aprendizaje en desarrollo frontend con Angular. Cada línea de código representa un paso más en el crecimiento profesional.*
