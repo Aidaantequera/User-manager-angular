@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Actividad_6": {
+    "User-manager-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/actividad-6",
+            "outputPath": "dist/User-manager-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Actividad_6:build:production"
+              "buildTarget": "User-manager-angular:build:production"
             },
             "development": {
-              "buildTarget": "Actividad_6:build:development"
+              "buildTarget": "User-manager-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
